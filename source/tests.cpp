@@ -28,13 +28,16 @@ TEST_CASE("describe_additionVec2", "[vec2]")
 	REQUIRE(a.y == Approx(-9.3f));
 
 	b += d;
-	REQUIRE(a.x == Approx(8.3f));
-	REQUIRE(a.y == Approx(-7.2f));
+	REQUIRE(b.x == Approx(8.3f));
+	REQUIRE(b.y == Approx(-7.2f));
 
 	d += c;
-	REQUIRE(a.x == Approx(3.2f));
-	REQUIRE(a.y == Approx(2.1f));
+	REQUIRE(d.x == Approx(3.2f));
+	REQUIRE(d.y == Approx(2.1f));
 
+	b += d += d;
+	REQUIRE(b.x == Approx(11.5f));
+	REQUIRE(b.y == Approx(-5.1f));
 
 }
 
@@ -52,13 +55,13 @@ TEST_CASE("describe_subtractionVec2", "[vec2]")
 	REQUIRE(a.x == Approx(-5.1f));
 	REQUIRE(a.y == Approx(9.3f));
 
-	b += d;
-	REQUIRE(a.x == Approx(1.9f));
-	REQUIRE(a.y == Approx(-11.4f));
+	b -= d;
+	REQUIRE(b.x == Approx(1.9f));
+	REQUIRE(b.y == Approx(-11.4f));
 
-	d += c;
-	REQUIRE(a.x == Approx(-3.2f));
-	REQUIRE(a.y == Approx(-2.1f));
+	d -= c;
+	REQUIRE(d.x == Approx(3.2f));
+	REQUIRE(d.y == Approx(2.1f));
 
 
 }
@@ -68,22 +71,25 @@ TEST_CASE("describe_scalarMultVec2", "[vec2]")
 	Vec2 a;
 	Vec2 b{ 5.1f, -9.3f };
 
-	REQUIRE((a*0.0f).x == Approx(0.0f));
-	REQUIRE((a*0.0f).y == Approx(0.0f));
+	a *= 0;
+	REQUIRE(a.x == Approx(0.0f));
+	REQUIRE(a.y == Approx(0.0f));
 
-	REQUIRE((a * 20.0f).x == Approx(0.0f));
-	REQUIRE((a * -20.0f).y == Approx(0.0f));
+	a *= 10;
+	REQUIRE(a.x == Approx(0.0f));
+	REQUIRE(a.y == Approx(0.0f));
 
-	REQUIRE((b * 2.0f).x == Approx(10.2f));
-	REQUIRE((b * 2.0f).y == Approx(-18.6f));
+	b *= 0;
+	REQUIRE(a.x == Approx(0.0f));
+	REQUIRE(a.y == Approx(0.0f));
 
-	REQUIRE((b * -1.0f).x == Approx(-5.1f));
-	REQUIRE((b * -1.0f).y == Approx(9.3f));
+	b *= 10;
+	REQUIRE(a.x == Approx(51.0f));
+	REQUIRE(a.y == Approx(-93.0f));
 
-	REQUIRE((b * 0.5f).x == Approx(2.55f));
-	REQUIRE((b * 0.5f).y == Approx(4.65f));
-
-
+	b *= -1;
+	REQUIRE(a.x == Approx(-5.1f));
+	REQUIRE(a.y == Approx(9.3f));
 }
 
 TEST_CASE("describe_scalarDivisVec2", "[vec2]")
@@ -91,19 +97,19 @@ TEST_CASE("describe_scalarDivisVec2", "[vec2]")
 	Vec2 a;
 	Vec2 b{ 5.1f, -9.3f };
 
-	
 
-	REQUIRE((a / 20.0f).x == Approx(0.0f));
-	REQUIRE((a / -20.0f).y == Approx(0.0f));
 
-	REQUIRE((b / 0.5f).x == Approx(10.2f));
-	REQUIRE((b / 0.5f).y == Approx(-18.6f));
+	a /= 10;
+	REQUIRE(a.x == Approx(0.0f));
+	REQUIRE(a.y == Approx(0.0f));
 
-	REQUIRE((b / -1.0f).x == Approx(-5.1f));
-	REQUIRE((b / -1.0f).y == Approx(9.3f));
+	b /= 10;
+	REQUIRE(a.x == Approx(0.51f));
+	REQUIRE(a.y == Approx(-0.93f));
 
-	REQUIRE((b / 2.0f).x == Approx(2.55f));
-	REQUIRE((b / 2.0f).y == Approx(4.65f));
+	b /= -1;
+	REQUIRE(a.x == Approx(-5.1f));
+	REQUIRE(a.y == Approx(9.3f));
 
 
 }

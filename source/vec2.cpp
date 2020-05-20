@@ -7,6 +7,8 @@ Vec2& Vec2::operator+=(Vec2 const& v) {
 }
 
 Vec2& Vec2::operator-=(Vec2 const& v) {
+	this->x -= v.x;
+	this->y -= v.y;
 	return *this;
 }
 Vec2& Vec2::operator*=(float s) {
