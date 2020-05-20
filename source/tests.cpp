@@ -35,10 +35,6 @@ TEST_CASE("describe_additionVec2", "[vec2]")
 	REQUIRE(d.x == Approx(3.2f));
 	REQUIRE(d.y == Approx(2.1f));
 
-	b += d += d;
-	REQUIRE(b.x == Approx(11.5f));
-	REQUIRE(b.y == Approx(-5.1f));
-
 }
 
 TEST_CASE("describe_subtractionVec2", "[vec2]")
@@ -80,36 +76,38 @@ TEST_CASE("describe_scalarMultVec2", "[vec2]")
 	REQUIRE(a.y == Approx(0.0f));
 
 	b *= 0;
-	REQUIRE(a.x == Approx(0.0f));
-	REQUIRE(a.y == Approx(0.0f));
+	REQUIRE(b.x == Approx(0.0f));
+	REQUIRE(b.y == Approx(0.0f));
 
-	b *= 10;
-	REQUIRE(a.x == Approx(51.0f));
-	REQUIRE(a.y == Approx(-93.0f));
+	Vec2 c{ 5.1f, -9.3f };
+	c *= 10.0f;
+	REQUIRE(c.x == Approx(51.0f));
+	REQUIRE(c.y == Approx(-93.0f));
 
-	b *= -1;
-	REQUIRE(a.x == Approx(-5.1f));
-	REQUIRE(a.y == Approx(9.3f));
+	Vec2 d{ 5.1f, -9.3f };
+	d *= -1;
+	REQUIRE(d.x == Approx(-5.1f));
+	REQUIRE(d.y == Approx(9.3f));
 }
 
 TEST_CASE("describe_scalarDivisVec2", "[vec2]")
 {
 	Vec2 a;
 	Vec2 b{ 5.1f, -9.3f };
-
-
+	Vec2 c{ 5.1f, -9.3f };
 
 	a /= 10;
 	REQUIRE(a.x == Approx(0.0f));
 	REQUIRE(a.y == Approx(0.0f));
 
 	b /= 10;
-	REQUIRE(a.x == Approx(0.51f));
-	REQUIRE(a.y == Approx(-0.93f));
+	REQUIRE(b.x == Approx(0.51f));
+	REQUIRE(b.y == Approx(-0.93f));
 
-	b /= -1;
-	REQUIRE(a.x == Approx(-5.1f));
-	REQUIRE(a.y == Approx(9.3f));
+
+	c /= -1;
+	REQUIRE(c.x == Approx(-5.1f));
+	REQUIRE(c.y == Approx(9.3f));
 
 
 }
