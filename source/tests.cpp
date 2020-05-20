@@ -143,7 +143,7 @@ TEST_CASE("describe_direktSubtractionVec2", "[vec2]")
 	REQUIRE((a - b).y == Approx(9.3f));
 
 	REQUIRE((b - c).x == Approx(-1.51f));
-	REQUIRE((b - c).y == Approx(-9.3f));
+	REQUIRE((b - c).y == Approx(-9.4f));
 }
 
 TEST_CASE("describe_direktMultiplicationVec2", "[vec2]")
@@ -180,7 +180,7 @@ TEST_CASE("describe_direktMultiplicationVec2", "[vec2]")
 
 }
 
-TEST_CASE("describe_direktMultiplicationVec2", "[vec2]")
+TEST_CASE("describe_direktDivisionVec2", "[vec2]")
 {
 	Vec2 a;
 	Vec2 b{ 5.1f, -9.3f };
