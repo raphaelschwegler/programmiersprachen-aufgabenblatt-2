@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat.hpp"
 
 TEST_CASE("describeVec2Test", "[vec2]")
 {
@@ -194,6 +195,76 @@ TEST_CASE("describe_direktDivisionVec2", "[vec2]")
 	REQUIRE((b / -10).x == Approx(-0.51f));
 	REQUIRE((b / -10).y == Approx(0.93f));
 }
+
+TEST_CASE("describe_multiplyMat2", "[vec2]")
+{
+	Mat2 a;
+	Mat2 b{ 5.0f, 3.0f, 8.0f, 2.0f };
+	Mat2 c{ 3.0f, 7.0f, 8.0f, 6.0f };
+	Mat2 d{ 0.0f, 0.0f, 0.0f, 0.0f };
+	Mat2 e{ -1.0f, 0.0f, 0.0f, -1.0f };
+
+	c *= b;
+	REQUIRE(c).00 == Approx(39.0f);
+	REQUIRE(c).10 == Approx(53.0f);
+	REQUIRE(c).01 == Approx(40.0f);
+	REQUIRE(c).11 == Approx(68.0f);
+
+	b *= a;
+	REQUIRE(b).00 == Approx(5.0f);
+	REQUIRE(b).10 == Approx(3.0f);
+	REQUIRE(b).01 == Approx(8.0f);
+	REQUIRE(b).11 == Approx(2.0f);
+
+	d *= b;
+	REQUIRE(d).00 == Approx(0.0f);
+	REQUIRE(d).10 == Approx(0.0f);
+	REQUIRE(d).01 == Approx(0.0f);
+	REQUIRE(d).11 == Approx(0.0f);
+
+	e *= b;
+	REQUIRE(e).00 == Approx(-5.0f);
+	REQUIRE(e).10 == Approx(-3.0f);
+	REQUIRE(e).01 == Approx(-8.0f);
+	REQUIRE(e).11 == Approx(-2.0f);
+}
+
+TEST_CASE("describe_direktMultiplyMat2", "[vec2]")
+{
+	Mat2 a;
+	Mat2 b{ 5.0f, 3.0f, 8.0f, 2.0f };
+	Mat2 c{ 3.0f, 7.0f, 8.0f, 6.0f };
+	Mat2 d{ 0.0f, 0.0f, 0.0f, 0.0f };
+	Mat2 e{ -1.0f, 0.0f, 0.0f, -1.0f };
+
+	
+	REQUIRE(c * b).00 == Approx(39.0f);
+	REQUIRE(c * b).10 == Approx(53.0f);
+	REQUIRE(c * b).01 == Approx(40.0f);
+	REQUIRE(c * b).11 == Approx(68.0f);
+
+	
+	REQUIRE(b * a).00 == Approx(5.0f);
+	REQUIRE(b * a).10 == Approx(3.0f);
+	REQUIRE(b * a).01 == Approx(8.0f);
+	REQUIRE(b * a).11 == Approx(2.0f);
+
+	
+	REQUIRE(d * b).00 == Approx(0.0f);
+	REQUIRE(d * b).10 == Approx(0.0f);
+	REQUIRE(d * b).01 == Approx(0.0f);
+	REQUIRE(d * b).11 == Approx(0.0f);
+
+	
+	REQUIRE(e * b).00 == Approx(-5.0f);
+	REQUIRE(e * b).10 == Approx(-3.0f);
+	REQUIRE(e * b).01 == Approx(-8.0f);
+	REQUIRE(e * b).11 == Approx(-2.0f);
+
+}
+
+
+
 
 int main(int argc, char *argv[])
 {
