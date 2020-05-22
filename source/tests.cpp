@@ -5,6 +5,7 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat.hpp"
+#include "color.hpp"
 
 TEST_CASE("describeVec2Test", "[vec2]")
 {
@@ -377,6 +378,13 @@ TEST_CASE("describe_makeRotationmMat2", "[mat]")
 	REQUIRE((make_rotation_mat2(M_PI_2)).e_11 == Approx(0.0f));
 }
 
+TEST_CASE("describe_makeRotationmMat2", "[mat]")
+{
+	Color a;
+	REQUIRE(a.r == Approx(0.5f));
+	REQUIRE(a.g == Approx(0.5f));
+	REQUIRE(a.b == Approx(0.5f));
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
