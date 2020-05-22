@@ -274,7 +274,7 @@ TEST_CASE("describe_detMat2", "[mat]")
 
 
 	REQUIRE(a.det() == Approx(1.0f));
-	REQUIRE(b.det() == Approx(-4.0f));
+	REQUIRE(b.det() == Approx(-14.0f));
 	REQUIRE(c.det() == Approx(0.0f));
 	REQUIRE(d.det() == Approx(1.0f));
 }
@@ -315,14 +315,9 @@ TEST_CASE("describe_inverseMat2", "[mat]")
 	REQUIRE((inverse(a)).e_11 == Approx(1.0f));
 
 	REQUIRE((inverse(b)).e_00 == Approx(-1.0f/7.0f));
-	REQUIRE((inverse(b)).e_10 == Approx(3.0f/14.0f));
-	REQUIRE((inverse(b)).e_01 == Approx(8.0f/14.0f));
-	REQUIRE((inverse(b)).e_11 == Approx(5.0f/14.0f));
-
-	REQUIRE((inverse(c)).e_00 == Approx(0.0f));
-	REQUIRE((inverse(c)).e_10 == Approx(0.0f));
-	REQUIRE((inverse(c)).e_01 == Approx(0.0f));
-	REQUIRE((inverse(c)).e_11 == Approx(0.0f));
+	REQUIRE((inverse(b)).e_10 == Approx(8.0f/14.0f));
+	REQUIRE((inverse(b)).e_01 == Approx(3.0f/14.0f));
+	REQUIRE((inverse(b)).e_11 == Approx(-5.0f/14.0f));
 
 	REQUIRE((inverse(d)).e_00 == Approx(-1.0f));
 	REQUIRE((inverse(d)).e_10 == Approx(0.0f));
@@ -352,10 +347,10 @@ TEST_CASE("describe_transposeMat2", "[mat]")
 	REQUIRE((transpose(b)).e_01 == Approx(3.0f));
 	REQUIRE((transpose(b)).e_11 == Approx(2.0f));
 
-	REQUIRE((transpose(b)).e_00 == Approx(2.0f));
-	REQUIRE((transpose(b)).e_10 == Approx(-2.0f));
-	REQUIRE((transpose(b)).e_01 == Approx(2.0f));
-	REQUIRE((transpose(b)).e_11 == Approx(-2.0f));
+	REQUIRE((transpose(c)).e_00 == Approx(2.0f));
+	REQUIRE((transpose(c)).e_10 == Approx(2.0f));
+	REQUIRE((transpose(c)).e_01 == Approx(-2.0f));
+	REQUIRE((transpose(c)).e_11 == Approx(-2.0f));
 }
 
 TEST_CASE("describe_makeRotationmMat2", "[mat]")
@@ -376,10 +371,10 @@ TEST_CASE("describe_makeRotationmMat2", "[mat]")
 	REQUIRE((make_rotation_mat2(0)).e_01 == Approx(0.0f));
 	REQUIRE((make_rotation_mat2(0)).e_11 == Approx(1.0f));
 
-	REQUIRE((make_rotation_mat2(-M_PI_2)).e_00 == Approx(0.0f));
-	REQUIRE((make_rotation_mat2(-M_PI_2)).e_10 == Approx(1.0f));
-	REQUIRE((make_rotation_mat2(-M_PI_2)).e_01 == Approx(-1.0f));
-	REQUIRE((make_rotation_mat2(-M_PI_2)).e_11 == Approx(0.0f));
+	REQUIRE((make_rotation_mat2(M_PI_2)).e_00 == Approx(0.0f));
+	REQUIRE((make_rotation_mat2(M_PI_2)).e_10 == Approx(1.0f));
+	REQUIRE((make_rotation_mat2(M_PI_2)).e_01 == Approx(-1.0f));
+	REQUIRE((make_rotation_mat2(M_PI_2)).e_11 == Approx(0.0f));
 }
 
 int main(int argc, char *argv[])
