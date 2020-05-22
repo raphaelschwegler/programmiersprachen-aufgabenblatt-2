@@ -205,28 +205,28 @@ TEST_CASE("describe_multiplyMat2", "[vec2]")
 	Mat2 e{ -1.0f, 0.0f, 0.0f, -1.0f };
 
 	c *= b;
-	REQUIRE(c).00 == Approx(39.0f);
-	REQUIRE(c).10 == Approx(53.0f);
-	REQUIRE(c).01 == Approx(40.0f);
-	REQUIRE(c).11 == Approx(68.0f);
+	REQUIRE(c.e_00 == Approx(39.0f));
+	REQUIRE(c.e_10 == Approx(53.0f));
+	REQUIRE(c.e_01 == Approx(40.0f));
+	REQUIRE(c.e_11 == Approx(68.0f));
 
 	b *= a;
-	REQUIRE(b).00 == Approx(5.0f);
-	REQUIRE(b).10 == Approx(3.0f);
-	REQUIRE(b).01 == Approx(8.0f);
-	REQUIRE(b).11 == Approx(2.0f);
+	REQUIRE(b.e_00 == Approx(5.0f));
+	REQUIRE(b.e_10 == Approx(3.0f));
+	REQUIRE(b.e_01 == Approx(8.0f));
+	REQUIRE(b.e_11 == Approx(2.0f));
 
 	d *= b;
-	REQUIRE(d).00 == Approx(0.0f);
-	REQUIRE(d).10 == Approx(0.0f);
-	REQUIRE(d).01 == Approx(0.0f);
-	REQUIRE(d).11 == Approx(0.0f);
+	REQUIRE(d.e_00 == Approx(0.0f));
+	REQUIRE(d.e_10 == Approx(0.0f));
+	REQUIRE(d.e_01 == Approx(0.0f));
+	REQUIRE(d.e_11 == Approx(0.0f));
 
 	e *= b;
-	REQUIRE(e).00 == Approx(-5.0f);
-	REQUIRE(e).10 == Approx(-3.0f);
-	REQUIRE(e).01 == Approx(-8.0f);
-	REQUIRE(e).11 == Approx(-2.0f);
+	REQUIRE(e.e_00 == Approx(-5.0f));
+	REQUIRE(e.e_10 == Approx(-3.0f));
+	REQUIRE(e.e_01 == Approx(-8.0f));
+	REQUIRE(e.e_11 == Approx(-2.0f));
 }
 
 TEST_CASE("describe_direktMultiplyMat2", "[vec2]")
@@ -238,28 +238,28 @@ TEST_CASE("describe_direktMultiplyMat2", "[vec2]")
 	Mat2 e{ -1.0f, 0.0f, 0.0f, -1.0f };
 
 	
-	REQUIRE(c * b).00 == Approx(39.0f);
-	REQUIRE(c * b).10 == Approx(53.0f);
-	REQUIRE(c * b).01 == Approx(40.0f);
-	REQUIRE(c * b).11 == Approx(68.0f);
+	REQUIRE((c * b).e_00 == Approx(39.0f));
+	REQUIRE((c * b).e_10 == Approx(53.0f));
+	REQUIRE((c * b).e_01 == Approx(40.0f));
+	REQUIRE((c * b).e_11 == Approx(68.0f));
 
 	
-	REQUIRE(b * a).00 == Approx(5.0f);
-	REQUIRE(b * a).10 == Approx(3.0f);
-	REQUIRE(b * a).01 == Approx(8.0f);
-	REQUIRE(b * a).11 == Approx(2.0f);
+	REQUIRE((b * a).e_00 == Approx(5.0f));
+	REQUIRE((b * a).e_10 == Approx(3.0f));
+	REQUIRE((b * a).e_01 == Approx(8.0f));
+	REQUIRE((b * a).e_11 == Approx(2.0f));
 
 	
-	REQUIRE(d * b).00 == Approx(0.0f);
-	REQUIRE(d * b).10 == Approx(0.0f);
-	REQUIRE(d * b).01 == Approx(0.0f);
-	REQUIRE(d * b).11 == Approx(0.0f);
+	REQUIRE((d * b).e_00 == Approx(0.0f));
+	REQUIRE((d * b).e_10 == Approx(0.0f));
+	REQUIRE((d * b).e_01 == Approx(0.0f));
+	REQUIRE((d * b).e_11 == Approx(0.0f));
 
 	
-	REQUIRE(e * b).00 == Approx(-5.0f);
-	REQUIRE(e * b).10 == Approx(-3.0f);
-	REQUIRE(e * b).01 == Approx(-8.0f);
-	REQUIRE(e * b).11 == Approx(-2.0f);
+	REQUIRE((e * b).e_00 == Approx(-5.0f));
+	REQUIRE((e * b).e_10 == Approx(-3.0f));
+	REQUIRE((e * b).e_01 == Approx(-8.0f));
+	REQUIRE((e * b).e_11 == Approx(-2.0f));
 
 }
 
