@@ -1,3 +1,4 @@
+#include <math.h>
 #include "mat.hpp"
 
 Mat2& Mat2::operator*=(Mat2 const& m) {
@@ -9,7 +10,7 @@ Mat2& Mat2::operator*=(Mat2 const& m) {
 	return *this;
 }
 
-float det() {
+float Mat2::det() const{
 	return 0.0f;
 }
 
