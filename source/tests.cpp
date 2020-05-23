@@ -6,6 +6,8 @@
 #include "vec2.hpp"
 #include "mat.hpp"
 #include "color.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 
 TEST_CASE("describeVec2Test", "[vec2]")
 {
@@ -378,13 +380,39 @@ TEST_CASE("describe_makeRotationmMat2", "[mat]")
 	REQUIRE((make_rotation_mat2(M_PI_2)).e_11 == Approx(0.0f));
 }
 
-TEST_CASE("describe_makeRotationmMat2", "[mat]")
+TEST_CASE("describe_color2", "[color]")
 {
 	Color a;
 	REQUIRE(a.r == Approx(0.5f));
 	REQUIRE(a.g == Approx(0.5f));
 	REQUIRE(a.b == Approx(0.5f));
 }
+
+TEST_CASE("describe_cirlceCircumfrence2", "[circle]")
+{
+	Circle  a{ Vec2{0.0f, 0.0f}, 6.0f };
+	REQUIRE(a.circumference() == Approx(12.0f*M_PI));
+
+	Circle  b{ Vec2{0.0f, 0.0f}, 0.0f };
+	REQUIRE(b.circumference() == Approx(0));
+
+	Circle  c{ Vec2{2.0f, -2.0f}, -3.0f };
+	REQUIRE(c.circumference() == Approx(6.0f * M_PI));
+
+}
+
+TEST_CASE("describe_rectCircumfrence2", "[rect]")
+{
+	Rect  a{ Vec2 {-2.0f, -2.0f}, Vec2{2.0f, 2.0f} };
+	REQUIRE(a.circumference() == Approx(16.0f));
+
+	Rect  b{ Vec2 {0.0f, 0.0f}, Vec2{0.0f, 0.0f} };
+	REQUIRE(b.circumference() == Approx(0.0f));
+
+	Rect  c{ Vec2 {2.0f, 2.0f}, Vec2{-2.0f, -2.0f} };
+	REQUIRE(c.circumference() == Approx(16.0f));
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
