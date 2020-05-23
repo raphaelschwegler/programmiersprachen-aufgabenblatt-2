@@ -2,11 +2,12 @@
 #include <math.h>
 #include "rectangle.hpp"
 
-Rect::Rect(Vec2 min, Vec2 max)
+Rect::Rect(Vec2 min, Vec2 max, Color color)
 {
 	// TODO: check needed to ensure min < max 
 	this->min_ = min;
 	this->max_ = max;
+	this->color_ = color;
 }
 
 float Rect::circumference() const {
