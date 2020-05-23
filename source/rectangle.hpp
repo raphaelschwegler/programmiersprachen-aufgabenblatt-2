@@ -5,5 +5,6 @@ class Rect {
 	public: Vec2 min_;
 	public: Vec2 max_;
 	Rect(Vec2 min, Vec2 max);
+	float circumference() const;
 };
 #endif 
