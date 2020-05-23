@@ -409,8 +409,11 @@ TEST_CASE("describe_rectCircumfrence2", "[rect]")
 	Rect  b{ Vec2 {0.0f, 0.0f}, Vec2{0.0f, 0.0f} };
 	REQUIRE(b.circumference() == Approx(0.0f));
 
-	Rect  c{ Vec2 {2.0f, 2.0f}, Vec2{-2.0f, -2.0f} };
-	REQUIRE(c.circumference() == Approx(16.0f));
+	Rect  c{ Vec2 {0.0f, 0.0f}, Vec2{5.0f, 1.0f} };
+	REQUIRE(c.circumference() == Approx(12.0f));
+
+	Rect  d{ Vec2 {-4.0f, -4.0f}, Vec2{-2.0f, -2.0f} };
+	REQUIRE(d.circumference() == Approx(8.0f));
 }
 
 int main(int argc, char *argv[])

@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include "circle.hpp"
 
 Circle::Circle(Vec2 center, float radius) {
@@ -5,5 +7,5 @@ Circle::Circle(Vec2 center, float radius) {
 	this->radius = radius;
 }
 float Circle::circumference() const {
-	return 0.0f;
+	return fabs(this->radius * 2 * M_PI);
 }
