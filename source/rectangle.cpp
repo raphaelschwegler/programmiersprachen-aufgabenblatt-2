@@ -2,6 +2,7 @@
 #include <math.h>
 #include "rectangle.hpp"
 
+
 Rect::Rect(Vec2 min, Vec2 max, Color color)
 {
 	// TODO: check needed to ensure min < max 
@@ -14,4 +15,12 @@ float Rect::circumference() const {
 	Vec2 widthHeight = this->max_ - this->min_;
 	float u = (widthHeight.x + widthHeight.y) * 2;
 	return fabs(u);
+}
+
+void Rect::draw(Window& w)
+{
+	w.draw_line(min_.x, min_.y, max_.x, min_.y, this->color_.r, this->color_.g, this->color_.b);
+	w.draw_line(min_.x, min_.y, min_.x, max_.y, this->color_.r, this->color_.g, this->color_.b);
+	w.draw_line(min_.x, max_.y, max_.x, max_.y, this->color_.r, this->color_.g, this->color_.b);
+	w.draw_line(max_.x, min_.y, max_.x, max_.y, this->color_.r, this->color_.g, this->color_.b);
 }

@@ -403,7 +403,7 @@ TEST_CASE("describe_cirlceCircumfrence2", "[circle]")
 
 TEST_CASE("describe_rectCircumfrence2", "[rect]")
 {
-	Rect  a{ Vec2 {-2.0f, -2.0f}, Vec2{2.0f, 2.0f} };
+	Rect  a( Vec2 {-2.0f, -2.0f}, Vec2{2.0f, 2.0f} );
 	REQUIRE(a.circumference() == Approx(16.0f));
 
 	Rect  b{ Vec2 {0.0f, 0.0f}, Vec2{0.0f, 0.0f} };

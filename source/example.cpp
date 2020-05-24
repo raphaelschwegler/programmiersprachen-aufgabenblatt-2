@@ -2,11 +2,16 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include "rectangle.hpp"
+#include "circle.hpp"
 
 
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
+
+  Rect r1 (Vec2{ 100,100 }, Vec2{ 400,400 }, Color{ 1,0,0 });
+  Circle c1(Vec2{ 400, 400 }, 200, Color{ 1,0,1 });
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -25,6 +30,9 @@ int main(int argc, char* argv[])
 
     float x3 = 400.f + 380.f * std::sin(t-10.f);
     float y3 = 400.f + 380.f * std::cos(t-10.f);
+
+    r1.draw(win);
+    c1.draw(win);
 
     win.draw_point(x1, y1, 1.0f, 0.0f, 0.0f);
     win.draw_point(x2, y2, 0.0f, 1.0f, 0.0f);
