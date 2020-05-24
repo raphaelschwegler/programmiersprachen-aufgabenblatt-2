@@ -34,14 +34,19 @@ void Circle::draw(Window& w)
 
 }
 */
-void Circle::draw(Window& w)
+
+void Circle::draw(Window& w) {
+	this->draw(w, 1.0f);
+}
+
+void Circle::draw(Window& w, float thickness)
 {
 	int m = 360;
 	Vec2 f{ this->radius,0 };
 	Vec2 curr, prev = f + this->center_;
 	for (int i = 1; i < m; i++) {
 		curr = (make_rotation_mat2(2 * M_PI * i / m) * f) + this->center_;
-		w.draw_line(prev.x, prev.y, curr.x, curr.y, this->color_.r, this->color_.g, this->color_.b);
+		w.draw_line(prev.x, prev.y, curr.x, curr.y, this->color_.r, this->color_.g, this->color_.b,thickness);
 		prev = curr;
 
 	}

@@ -13,6 +13,9 @@ int main(int argc, char* argv[])
   Rect r1 (Vec2{ 100,100 }, Vec2{ 400,400 }, Color{ 1,0,0 });
   Circle c1(Vec2{ 400, 400 }, 200, Color{ 1,0,1 });
 
+  Rect r2(Vec2{ 200,300 }, Vec2{ 500,500 }, Color{ 0,1,0.5 });
+  Circle c2(Vec2{ 600, 700 }, 75, Color{ 0.5,1,0 });
+
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
@@ -33,6 +36,8 @@ int main(int argc, char* argv[])
 
     r1.draw(win);
     c1.draw(win);
+    r2.draw(win, 3);
+    c2.draw(win, 0.5);
 
     win.draw_point(x1, y1, 1.0f, 0.0f, 0.0f);
     win.draw_point(x2, y2, 0.0f, 1.0f, 0.0f);

@@ -11,5 +11,6 @@ class Rect {
 	Rect(Vec2 min, Vec2 max, Color color = Color{ 0.5f, 0.5f, 0.5f });
 	float circumference() const;
 	void draw(Window& w);
+	void draw(Window& w, float thickness);
 };
 #endif 
