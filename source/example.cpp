@@ -4,6 +4,7 @@
 #include <cmath>
 #include "rectangle.hpp"
 #include "circle.hpp"
+#include <vector>
 
 
 int main(int argc, char* argv[])
@@ -15,6 +16,10 @@ int main(int argc, char* argv[])
 
   Rect r2(Vec2{ 200,300 }, Vec2{ 500,500 }, Color{ 0,1,0.5 });
   Circle c2(Vec2{ 600, 700 }, 75, Color{ 0.5,1,0 });
+ 
+  std::vector<Rect> rs = { r1,r2 };
+  std::vector<Circle> cs = { c1,c2 };
+
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -34,14 +39,13 @@ int main(int argc, char* argv[])
     float x3 = 400.f + 380.f * std::sin(t-10.f);
     float y3 = 400.f + 380.f * std::cos(t-10.f);
 
-    r1.draw(win);
-    c1.draw(win);
-    r2.draw(win, 3);
-    c2.draw(win, 0.5);
+ 
 
     win.draw_point(x1, y1, 1.0f, 0.0f, 0.0f);
     win.draw_point(x2, y2, 0.0f, 1.0f, 0.0f);
     win.draw_point(x3, y3, 0.0f, 0.0f, 1.0f);
+
+
 
     auto mouse_position = win.mouse_position();
     if (left_pressed) {
@@ -50,6 +54,18 @@ int main(int argc, char* argv[])
                     1.0,0.0,0.0, // color with r,g,b in [0.0, 1.0]
                     1.0);        // line thickness = 1.0 * default thickness
     }
+
+    Vec2 mouse({ (float)mouse_position.first, (float)mouse_position.second });
+    int thickness;
+    for (auto const& r : rs) {
+        thickness = r.is_inside(mouse) ? 2 : 1;
+        r.draw(win, thickness);
+    }
+    for (auto const& c : cs) {
+        thickness = c.is_inside(mouse) ? 2 : 1;
+        c.draw(win, thickness);
+    }
+   
 
     win.draw_line(0, mouse_position.second, 10, mouse_position.second, 0.0, 0.0, 0.0);
     win.draw_line(win.window_size().second - 10, mouse_position.second, win.window_size().second, mouse_position.second, 0.0, 0.0, 0.0);

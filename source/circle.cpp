@@ -35,11 +35,11 @@ void Circle::draw(Window& w)
 }
 */
 
-void Circle::draw(Window& w) {
+void Circle::draw(Window& w)const {
 	this->draw(w, 1.0f);
 }
 
-void Circle::draw(Window& w, float thickness)
+void Circle::draw(Window& w, float thickness) const
 {
 	int m = 360;
 	Vec2 f{ this->radius,0 };
@@ -53,4 +53,9 @@ void Circle::draw(Window& w, float thickness)
 	prev = f + this->center_;
 	w.draw_line(prev.x, prev.y, curr.x, curr.y, this->color_.r, this->color_.g, this->color_.b);
 
+}
+
+bool Circle::is_inside(Vec2 v) const
+{
+	return (v - this->center_).magnitude() < this->radius;
 }

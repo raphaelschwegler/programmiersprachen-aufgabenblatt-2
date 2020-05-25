@@ -1,4 +1,5 @@
 #include "vec2.hpp"
+#include <cmath>
 
 Vec2& Vec2::operator+=(Vec2 const& v) {
 	this->x += v.x;
@@ -20,6 +21,11 @@ Vec2& Vec2::operator/=(float s) {
 	this->x /= s;
 	this->y /= s;
 	return *this;
+}
+
+float Vec2::magnitude() const
+{
+	return sqrt(pow(this->x,2) + pow(this->y,2));
 }
 
 Vec2 operator+(Vec2 const& u, Vec2 const& v) {

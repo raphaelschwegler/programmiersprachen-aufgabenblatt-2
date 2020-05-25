@@ -17,14 +17,23 @@ float Rect::circumference() const {
 	return fabs(u);
 }
 
-void Rect::draw(Window& w) {
+void Rect::draw(Window& w) const {
 	this->draw(w, 1.0f);
 }
 
-void Rect::draw(Window& w, float thickness)
+void Rect::draw(Window& w, float thickness) const
 {
 	w.draw_line(min_.x, min_.y, max_.x, min_.y, this->color_.r, this->color_.g, this->color_.b, thickness);
 	w.draw_line(min_.x, min_.y, min_.x, max_.y, this->color_.r, this->color_.g, this->color_.b, thickness);
 	w.draw_line(min_.x, max_.y, max_.x, max_.y, this->color_.r, this->color_.g, this->color_.b, thickness);
 	w.draw_line(max_.x, min_.y, max_.x, max_.y, this->color_.r, this->color_.g, this->color_.b, thickness);
+}
+
+bool Rect::is_inside(Vec2 v) const
+{
+	return (
+		this->min_.x < v.x && 
+		this->min_.y < v.y &&
+		this->max_.x > v.x &&
+		this->max_.y > v.y);
 }
