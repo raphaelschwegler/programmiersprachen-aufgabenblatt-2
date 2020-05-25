@@ -35,11 +35,11 @@ void Circle::draw(Window& w)
 }
 */
 
-void Circle::draw(Window& w)const {
+void Circle::draw(Window& w) {
 	this->draw(w, 1.0f);
 }
 
-void Circle::draw(Window& w, float thickness) const
+void Circle::draw(Window& w, float thickness) 
 {
 	int m = 360;
 	Vec2 f{ this->radius,0 };

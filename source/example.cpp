@@ -5,6 +5,7 @@
 #include "rectangle.hpp"
 #include "circle.hpp"
 #include <vector>
+#include "clock.hpp"
 
 
 int main(int argc, char* argv[])
@@ -16,10 +17,10 @@ int main(int argc, char* argv[])
 
   Rect r2(Vec2{ 200,300 }, Vec2{ 500,500 }, Color{ 0,1,0.5 });
   Circle c2(Vec2{ 600, 700 }, 75, Color{ 0.5,1,0 });
+  Clock c3 (Vec2{ 500, 300 }, 150, win.get_time());
  
   std::vector<Rect> rs = { r1,r2 };
-  std::vector<Circle> cs = { c1,c2 };
-
+  std::vector<Circle> cs = { c1,c2};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -57,15 +58,16 @@ int main(int argc, char* argv[])
 
     Vec2 mouse({ (float)mouse_position.first, (float)mouse_position.second });
     int thickness;
-    for (auto const& r : rs) {
+    for (auto & r : rs) {
         thickness = r.is_inside(mouse) ? 2 : 1;
         r.draw(win, thickness);
     }
-    for (auto const& c : cs) {
+    for (auto & c : cs) {
         thickness = c.is_inside(mouse) ? 2 : 1;
         c.draw(win, thickness);
     }
-   
+
+    c3.draw(win, thickness);
 
     win.draw_line(0, mouse_position.second, 10, mouse_position.second, 0.0, 0.0, 0.0);
     win.draw_line(win.window_size().second - 10, mouse_position.second, win.window_size().second, mouse_position.second, 0.0, 0.0, 0.0);
